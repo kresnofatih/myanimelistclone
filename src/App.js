@@ -83,19 +83,22 @@ function App() {
 
   return (
     <div className="App">
-      <Login
-        email={email}
-        password={password}
-        setEmail={setEmail}
-        setPassword={setPassword}
-        handleLogin={handleLogin}
-        handleSignup={handleSignup}
-        hasAccount={hasAccount}
-        setHasAccount={setHasAccount}
-        emailErrorMsg={emailErrorMsg}
-        passwordErrorMsg={passwordErrorMsg}
-      />
-      <Hero handleLogout={handleLogout}/>
+      {user ? (
+        <Hero handleLogout={handleLogout}/>
+      ) : (
+        <Login
+          email={email}
+          password={password}
+          setEmail={setEmail}
+          setPassword={setPassword}
+          handleLogin={handleLogin}
+          handleSignup={handleSignup}
+          hasAccount={hasAccount}
+          setHasAccount={setHasAccount}
+          emailErrorMsg={emailErrorMsg}
+          passwordErrorMsg={passwordErrorMsg}
+        />
+      )}
     </div>
   );
 }
