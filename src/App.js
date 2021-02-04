@@ -1,6 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import fire from './Fire';
 import './App.css';
+import Login from './components/Login';
+import Hero from './components/Hero';
 
 function App() {
   const [user, setUser] = useState('')
@@ -81,7 +83,19 @@ function App() {
 
   return (
     <div className="App">
-      Hello
+      <Login
+        email={email}
+        password={password}
+        setEmail={setEmail}
+        setPassword={setPassword}
+        handleLogin={handleLogin}
+        handleSignup={handleSignup}
+        hasAccount={hasAccount}
+        setHasAccount={setHasAccount}
+        emailErrorMsg={emailErrorMsg}
+        passwordErrorMsg={passwordErrorMsg}
+      />
+      <Hero handleLogout={handleLogout}/>
     </div>
   );
 }
