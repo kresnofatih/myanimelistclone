@@ -1,5 +1,6 @@
 import React from 'react'
 import './Login.css'
+import loginIllustration from './malcwallpap.png'
 
 function Login({email, 
                 password, 
@@ -18,26 +19,35 @@ function Login({email,
             }) {
     return (
         <div className="loginComponent">
+            <div className="loginillustration">
+                <h1 className="webtitle">malc.</h1>
+                <h1 className="webslogan">the best anime <br/>community</h1>
+            </div>
             <div className="loginContainer">
                 {hasAccount ? (
                     <div className="loginbox">
-                        <p className="emailLabel">Email</p>
+                        <div className="loginboxtitle">
+                            <h3 className="logintitle">Sign In</h3>
+                            <p className="loginslogan">enter the community now!</p>
+                        </div>
                         <input
                             type='text'
                             autoFocus
                             required
+                            placeholder="Email"
                             value={email}
                             onChange={(e)=>setEmail(e.target.value)}
-                        />
-                        <p className="emailErrorMsg">{emailErrorMsg}</p>
-                        <p className="passwordLabel">Password</p>
+                            />
+                        <p className="emailErrorMsg errormsglabel">{emailErrorMsg}</p>
+                        {/* <p className="passwordLabel inputLabel">Password</p> */}
                         <input
                             type='password'
+                            placeholder="Password"
                             required
                             value={password}
                             onChange={(e)=>setPassword(e.target.value)}
                         />
-                        <p className="passwordErrorMsg">{passwordErrorMsg}</p>
+                        <p className="passwordErrorMsg errormsglabel">{passwordErrorMsg}</p>
                         <div className="btnContainer">
                             <button onClick={handleLogin}>Sign In</button>
                             <p>Don't have an account? <span onClick={()=>setHasAccount(!hasAccount)}>sign up</span></p>
@@ -45,39 +55,43 @@ function Login({email,
                     </div>
                 ) : (
                     <div className="loginbox">
-                        <p className="userNameLabel">UserName</p>
+                        <div className="loginboxtitle">
+                            <h3 className="logintitle">Sign Up</h3>
+                            <p className="loginslogan">join the community now!</p>
+                        </div>
                         <input
                             type='text'
+                            placeholder="Username"
                             required
                             value={userName}
                             onChange={(e)=>setUserName(e.target.value)}
-                        />
-                        <p className="emailLabel">Email</p>
+                            />
                         <input
                             type='text'
+                            placeholder="Email"
                             autoFocus
                             required
                             value={email}
                             onChange={(e)=>setEmail(e.target.value)}
-                        />
-                        <p className="emailErrorMsg">{emailErrorMsg}</p>
-                        <p className="passwordLabel">Password</p>
+                            />
+                        <p className="emailErrorMsg errormsglabel">{emailErrorMsg}</p>
                         <input
                             type='password'
                             required
+                            placeholder="Password"
                             value={password}
                             onChange={(e)=>setPassword(e.target.value)}
-                        />
-                        <p className="passwordErrorMsg">{passwordErrorMsg}</p>
-                        <p className="photoUrlLabel">Photo URL</p>
+                            />
+                        <p className="passwordErrorMsg errormsglabel">{passwordErrorMsg}</p>
                         <input
                             type='text'
                             required
+                            placeholder="Photo URL"
                             value={photoUrl}
                             onChange={(e)=>setPhotoUrl(e.target.value)}
                         />
                         <div className="btnContainer">
-                            <button onClick={handleSignup}>Sign Up</button>
+                            <button onClick={handleSignup}>Create Account</button>
                             <p>Already have an account? <span onClick={()=>setHasAccount(!hasAccount)}>sign in</span></p>
                         </div>
                     </div>

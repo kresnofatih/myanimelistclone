@@ -1,4 +1,110 @@
-.loginComponent p {
+/* imports */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;900&display=swap');
+
+.loginComponent {
+    margin: 0;
+    margin-top: 100px;
+    max-width: 1300px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    border-radius: 50px;
+    overflow: hidden;
+    background-color: white;
+}
+/* loginbox */
+.loginbox {
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    background-color: #127681;
+    padding-left: 30px;
+    padding-right: 30px;
+    color: white;
+}
+.errormsglabel {
+    margin: 0;
+    padding: 0;
+}
+
+/* login illustration */
+.loginillustration {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 400px;
+    padding: 40px;
+    background-image: url('./malcwallpap.png');
+    background-position-x: left;
+    background-position-y: bottom;
+    background-size: 700px;
+    background-repeat: no-repeat;
+}
+.loginillustration h1 {
+    margin: 0;
+    margin-bottom: 10px;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+.webtitle {
+    font-weight: 900;
+    color: #10375C;
+}
+.webslogan {
+    font-weight: 400;
+    font-size: 25px;
+    padding-top: 50px;
+    color: #127681;
+}
+.loginbox input {
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-bottom: 1px solid white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+}
+.loginbox input:focus {
+    outline: none;
+}
+
+.loginboxtitle {
+    margin-bottom: 20px;
+}
+.logintitle {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+    margin-top: 5px;
+}
+.loginslogan {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    padding: 0;
+    margin: 0;
+    margin-top: 5px;
+}
+
+.btnContainer button {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    width: 100%;
+    border: none;
+    border-radius: 50ch;
+    padding: 10px;
+    margin-top: 30px;
+    background-color: #10375C;
+    color: white;
 }
