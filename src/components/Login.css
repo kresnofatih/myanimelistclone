@@ -28,6 +28,9 @@
 .errormsglabel {
     margin: 0;
     padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 8px;
+    font-style: italic;
 }
 
 /* login illustration */
@@ -107,4 +110,21 @@
     margin-top: 30px;
     background-color: #10375C;
     color: white;
+}
+.btnContainer button:hover {
+    background-color: #134574;
+    cursor: pointer;
+}
+.btnContainer p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+}
+.btnContainer span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+}
+.btnContainer span:hover {
+    cursor: pointer;
 }

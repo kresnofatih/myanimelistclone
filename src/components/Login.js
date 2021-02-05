@@ -39,7 +39,6 @@ function Login({email,
                             onChange={(e)=>setEmail(e.target.value)}
                             />
                         <p className="emailErrorMsg errormsglabel">{emailErrorMsg}</p>
-                        {/* <p className="passwordLabel inputLabel">Password</p> */}
                         <input
                             type='password'
                             placeholder="Password"
@@ -92,7 +91,7 @@ function Login({email,
                         />
                         <div className="btnContainer">
                             <button onClick={handleSignup}>Create Account</button>
-                            <p>Already have an account? <span onClick={()=>setHasAccount(!hasAccount)}>sign in</span></p>
+                            <p>Already have an account?  <span onClick={()=>setHasAccount(!hasAccount)}>sign in</span></p>
                         </div>
                     </div>
                 )}

@@ -4,8 +4,10 @@ function Hero({user, handleLogout}) {
     return (
         <div>
             welcome
-            <p>{user.displayName}</p>
-            <img src={user.photoURL}/>
+            <div>
+                <p>{user.displayName}</p>
+                <img src={user.photoURL}/>
+            </div>
             <button onClick={handleLogout}>Logout</button>
         </div>
     )

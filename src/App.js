@@ -32,6 +32,7 @@ function App() {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .catch(err=>{
+        clearInputs();
         switch(err.code){
           case "auth/invalid-email":
             setEmailErrorMsg("Invalid Email");
@@ -44,8 +45,9 @@ function App() {
             break;
           case "auth/wrong-password":
             setPasswordErrorMsg(err.message);
-        }
-      })
+            break;
+        };
+      });
   };
 
   const handleSignup = () => {
@@ -60,6 +62,7 @@ function App() {
         })
       })
       .catch(err=>{
+        clearInputs();
         switch(err.code){
           case "auth/email-already-in-use":
           case "auth/invalid-email":
@@ -68,7 +71,7 @@ function App() {
           case "auth/weak-password":
             setPasswordErrorMsg(err.message);
             break;
-        }
+        };
       })
   };
 
@@ -90,13 +93,17 @@ function App() {
 
   useEffect(()=>{
     authListener();
-    console.log(user);
-  }, [])
+    setEmailErrorMsg('');
+    setPasswordErrorMsg('');
+  }, [hasAccount])
 
   return (
     <div className="App">
       {user ? (
-        <Hero user={user} handleLogout={handleLogout}/>
+        <Hero 
+          user={user} 
+          handleLogout={handleLogout}
+        />
       ) : (
         <Login
           email={email}
