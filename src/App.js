@@ -11,10 +11,14 @@ function App() {
   const [emailErrorMsg, setEmailErrorMsg] = useState('')
   const [passwordErrorMsg, setPasswordErrorMsg] = useState('')
   const [hasAccount, setHasAccount] = useState(false)
+  const [userName, setUserName] = useState('')
+  const [photoUrl, setPhotoUrl] = useState('')
 
   const clearInputs = () => {
     setEmail('');
     setPassword('');
+    setUserName('');
+    setPhotoUrl('')
   }
 
   const clearErrors = () => {
@@ -49,6 +53,12 @@ function App() {
     fire
       .auth()
       .createUserWithEmailAndPassword(email, password)
+      .then((authUser)=>{
+        authUser.user.updateProfile({
+          displayName: userName,
+          photoURL: photoUrl || "https://pbs.twimg.com/profile_images/1131624264405327873/1YpVVtxD_400x400.jpg"
+        })
+      })
       .catch(err=>{
         switch(err.code){
           case "auth/email-already-in-use":
@@ -71,6 +81,7 @@ function App() {
       if(user){
         clearInputs();
         setUser(user);
+        console.log(user);
       } else {
         setUser('')
       }
@@ -79,12 +90,13 @@ function App() {
 
   useEffect(()=>{
     authListener();
+    console.log(user);
   }, [])
 
   return (
     <div className="App">
       {user ? (
-        <Hero handleLogout={handleLogout}/>
+        <Hero user={user} handleLogout={handleLogout}/>
       ) : (
         <Login
           email={email}
@@ -97,6 +109,10 @@ function App() {
           setHasAccount={setHasAccount}
           emailErrorMsg={emailErrorMsg}
           passwordErrorMsg={passwordErrorMsg}
+          userName={userName}
+          setUserName={setUserName}
+          photoUrl={photoUrl}
+          setPhotoUrl={setPhotoUrl}
         />
       )}
     </div>

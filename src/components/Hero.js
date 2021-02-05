@@ -1,9 +1,11 @@
 import React from 'react'
 
-function Hero({handleLogout}) {
+function Hero({user, handleLogout}) {
     return (
         <div>
             welcome
+            <p>{user.displayName}</p>
+            <img src={user.photoURL}/>
             <button onClick={handleLogout}>Logout</button>
         </div>
     )
