@@ -10,7 +10,7 @@ function App() {
   const [password, setPassword] = useState('')
   const [emailErrorMsg, setEmailErrorMsg] = useState('')
   const [passwordErrorMsg, setPasswordErrorMsg] = useState('')
-  const [hasAccount, setHasAccount] = useState(false)
+  const [hasAccount, setHasAccount] = useState(true)
   const [userName, setUserName] = useState('')
   const [photoUrl, setPhotoUrl] = useState('')
 
@@ -59,7 +59,9 @@ function App() {
         authUser.user.updateProfile({
           displayName: userName,
           photoURL: photoUrl || "https://pbs.twimg.com/profile_images/1131624264405327873/1YpVVtxD_400x400.jpg"
-        })
+        });
+        setHasAccount(true);
+        handleLogout();
       })
       .catch(err=>{
         clearInputs();
@@ -72,7 +74,7 @@ function App() {
             setPasswordErrorMsg(err.message);
             break;
         };
-      })
+      });
   };
 
   const handleLogout = () => {
@@ -84,7 +86,7 @@ function App() {
       if(user){
         clearInputs();
         setUser(user);
-        console.log(user);
+        // console.log(user);
       } else {
         setUser('')
       }
@@ -99,7 +101,7 @@ function App() {
 
   return (
     <div className="App">
-      {user ? (
+      {user!='' ? (
         <Hero 
           user={user} 
           handleLogout={handleLogout}
