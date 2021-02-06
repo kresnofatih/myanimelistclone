@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;900&display=swap');
+
+.heroheadercontainer {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    padding: 5px 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+
+.heroheader {
+    width: 100%;
+}
+
+.heroheaderlogo {
+    color: #10375C;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.heroava {
+    border-radius: 50ch;
+    height: 50px;
+    width: 50px;
+}

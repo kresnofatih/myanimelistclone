@@ -1,14 +1,14 @@
 import React, {useEffect} from 'react'
-
+import Header from './herocomponents/Header'
+import './Hero.css'
 
 function Hero({user, handleLogout}) {
     return (
-        <div>
-            welcome
-            <div>
-                <p>{user.displayName}</p>
-                <img src={user.photoURL}/>
-            </div>
+        <div className="hero">
+            <Header 
+                userName={user.displayName}
+                profilePictureUrl={user.photoURL}
+            />
             <button onClick={handleLogout}>Logout</button>
         </div>
     )
