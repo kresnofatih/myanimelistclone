@@ -1,6 +1,5 @@
 import React from 'react'
 import './Login.css'
-import loginIllustration from './malcwallpap.png'
 
 function Login({email, 
                 password, 
@@ -27,7 +26,7 @@ function Login({email,
                 {hasAccount ? (
                     <div className="loginbox">
                         <div className="loginboxtitle">
-                            <h3 className="logintitle">Sign In</h3>
+                            <h3 className="logintitle">Log In</h3>
                             <p className="loginslogan">enter the community now!</p>
                         </div>
                         <input
@@ -48,7 +47,7 @@ function Login({email,
                         />
                         <p className="passwordErrorMsg errormsglabel">{passwordErrorMsg}</p>
                         <div className="btnContainer">
-                            <button onClick={handleLogin}>Sign In</button>
+                            <button onClick={handleLogin}>Log In</button>
                             <p>Don't have an account? <span onClick={()=>setHasAccount(!hasAccount)}>sign up</span></p>
                         </div>
                     </div>
