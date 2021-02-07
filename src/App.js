@@ -119,7 +119,7 @@ function App() {
           Successfully Created Account!
         </Alert>
       </Snackbar>
-      {user!='' ? (
+      {user!=='' ? (
         <Hero 
           user={user} 
           handleLogout={handleLogout}

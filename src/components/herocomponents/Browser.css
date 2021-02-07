@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;900&display=swap');
+
+.browser {
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    background-color: #DFDFDF;
+    border: 3px solid white;
+}
+
+.browsersearchbar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px;
+}
+
+.browsersearchbar input {
+    flex: 0.95;
+    padding: 10px;
+    padding-left: 15px;
+    margin: 0;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: #127681;
+    border: none;
+    border-radius: 50ch;
+    outline: none;
+}
+
+.browsersearchbar button {
+    margin: 0;
+    margin-left: 20px;
+    padding: 10px;
+    width: 100px;
+    background-color: #127681;
+    color: white;
+    border: none;
+    border-radius: 50ch;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    outline: none;
+}
+.browsersearchbar button:hover {
+    background-color:#148491;
+    cursor: pointer;
+}
