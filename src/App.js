@@ -3,6 +3,12 @@ import fire from './Fire';
 import './App.css';
 import Login from './components/Login';
 import Hero from './components/Hero';
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert';
+
+function Alert(props) {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 function App() {
   const [user, setUser] = useState('')
@@ -13,6 +19,7 @@ function App() {
   const [hasAccount, setHasAccount] = useState(true)
   const [userName, setUserName] = useState('')
   const [photoUrl, setPhotoUrl] = useState('')
+  const [createdAccount, setCreatedAccount] = useState(false)
 
   const clearInputs = () => {
     setEmail('');
@@ -48,6 +55,7 @@ function App() {
             break;
         };
       });
+    setCreatedAccount(false);
   };
 
   const handleSignup = () => {
@@ -61,6 +69,7 @@ function App() {
           photoURL: photoUrl || "https://pbs.twimg.com/profile_images/1131624264405327873/1YpVVtxD_400x400.jpg"
         });
         setHasAccount(true);
+        setCreatedAccount(true);
         handleLogout();
       })
       .catch(err=>{
@@ -100,6 +109,16 @@ function App() {
 
   return (
     <div className="App">
+      <Snackbar 
+        open={createdAccount} 
+        autoHideDuration={3000} 
+        onClose={()=>setCreatedAccount(false)}>
+        <Alert 
+          onClose={()=>setCreatedAccount(false)} 
+          severity="success">
+          Successfully Created Account!
+        </Alert>
+      </Snackbar>
       {user!='' ? (
         <Hero 
           user={user} 

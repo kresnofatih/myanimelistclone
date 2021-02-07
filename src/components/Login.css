@@ -142,6 +142,7 @@
     margin-top: 30px;
     background-color: #10375C;
     color: white;
+    outline: none;
 }
 .btnContainer button:hover {
     background-color: #134574;
