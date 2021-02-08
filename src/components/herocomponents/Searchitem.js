@@ -2,6 +2,9 @@ import React, {useState, useEffect} from 'react'
 import './Searchitem.css'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import { cyan } from '@material-ui/core/colors';
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 function Searchitem({id}) {
     const [data] = useState({})
@@ -33,9 +36,15 @@ function Searchitem({id}) {
         // set state
         setHasData(true);
     }
+    const [anchorEl, setAnchorEl] = useState(null);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    }
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
     useEffect(()=>{
         getAnimeData();
-        // console.log(data.imageUrl);
     }, [])
     return (
         <div className="searchitem">
@@ -53,9 +62,26 @@ function Searchitem({id}) {
                             <p className="searchitem_data">Type: {data.type}</p>
                         </div>
                     </div>
-                    <button className="submitscore">
+                    <button 
+                        className="submitscore" 
+                        aria-controls="simple-menu" 
+                        aria-haspopup="true"
+                        onClick={handleClick}
+                    >
                         <AddCircleIcon fontSize="large" style={{color: cyan[800]}}/>
                     </button>
+                    <Menu
+                        id="simple-menu"
+                        anchorEl={anchorEl}
+                        keepMounted
+                        open={Boolean(anchorEl)}
+                        onClose={handleClose}
+                    >
+                        <MenuItem onClick={handleClose}><p className="submitScoreTabTitle">Score</p></MenuItem>
+                        {[1,2,3,4,5,6,7,8,9,10].map((val)=>(
+                            <MenuItem onClick={handleClose}>{val}</MenuItem>
+                        ))}
+                    </Menu>
                 </div>
             }
         </div>
