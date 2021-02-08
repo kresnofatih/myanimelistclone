@@ -7,8 +7,9 @@ function Browser() {
     const [hasData, setHasData] = useState(false)
     const [data] = useState([])
     const searchAnime = async (searchKeyword) => {
+
         const keyword = searchKeyword.trim();
-        const resp = await fetch(`https://api.jikan.moe/v3/search/anime?q=${keyword}&limit=5`);
+        const resp = await fetch(`https://api.jikan.moe/v3/search/anime?q=${keyword}&limit=20`);
         const respjson = await resp.json();
         data.splice(0, data.length);
         setHasData(false);
@@ -28,7 +29,8 @@ function Browser() {
                     onChange={(e)=>setSearchKeyword(e.target.value)}
                 />
                 <button 
-                    onClick={()=>{
+                    onClick={(e)=>{
+                        e.preventDefault();
                         searchAnime(searchKeyword);
                         setSearchKeyword('');
                 }}>Search</button>

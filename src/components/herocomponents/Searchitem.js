@@ -11,30 +11,36 @@ function Searchitem({id}) {
     const [hasData, setHasData] = useState(false)
     const getAnimeData = async () => {
         const resp = await fetch(`https://api.jikan.moe/v3/anime/${id}`);
-        const respjson = await resp.json();
-
-        // assign properties
-        data.imageUrl = respjson.image_url;
-        data.title = respjson.title;
-        data.epsiodes = respjson.episodes;
-
-        // process the synopsis data
-        if(respjson.synopsis===null){
-            data.synopsis = 'This anime has no synopsis yet.'
-        } else {
-            data.synopsis = respjson.synopsis.slice(0, 200)+' ...';
+        if(resp.status===200){
+            console.log("got the data");
+            const respjson = await resp.json();
+    
+            // assign properties
+            data.imageUrl = respjson.image_url;
+            data.title = respjson.title;
+            data.epsiodes = respjson.episodes;
+    
+            // process the synopsis data
+            if(respjson.synopsis===null){
+                data.synopsis = 'This anime has no synopsis yet.'
+            } else {
+                data.synopsis = respjson.synopsis.slice(0, 200)+' ...';
+            }
+            data.type = respjson.type;
+            
+            //  process multiple genres
+            data.genres = '';
+            respjson.genres.forEach(({name})=>{
+                data.genres += name;
+                data.genres += ', ';
+            })
+            setHasData(true);
+        } else if(resp.status===429){
+            console.log("retrying");
+            return getAnimeData();
         }
-        data.type = respjson.type;
-        
-        //  process multiple genres
-        data.genres = '';
-        respjson.genres.forEach(({name})=>{
-            data.genres += name;
-            data.genres += ', ';
-        })
 
         // set state
-        setHasData(true);
     }
     const [anchorEl, setAnchorEl] = useState(null);
     const handleClick = (event) => {
