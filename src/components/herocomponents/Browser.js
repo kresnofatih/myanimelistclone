@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import './Browser.css'
-import Feed from './Feed'
+import Searchitem from './Searchitem'
 
 function Browser() {
     const [searchKeyword, setSearchKeyword] = useState('')
@@ -34,7 +34,7 @@ function Browser() {
                 }}>Search</button>
             </div>
             {hasData && data.map(item=>(
-                <p>{item}</p>
+                <Searchitem key={item} id={item}/>
             ))}
         </div>
     )
