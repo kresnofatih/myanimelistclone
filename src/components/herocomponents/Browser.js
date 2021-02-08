@@ -1,24 +1,23 @@
 import React, {useState} from 'react'
 import './Browser.css'
-import Searchitem from './Searchitem';
+import Feed from './Feed'
 
 function Browser() {
     const [searchKeyword, setSearchKeyword] = useState('')
     const [hasData, setHasData] = useState(false)
-    const [data, setData] = useState([])
+    const [data] = useState([])
     const searchAnime = async (searchKeyword) => {
-        setData([]);
         const keyword = searchKeyword.trim();
         const resp = await fetch(`https://api.jikan.moe/v3/search/anime?q=${keyword}&limit=5`);
         const respjson = await resp.json();
+        data.splice(0, data.length);
+        setHasData(false);
         respjson.results.forEach((item)=>{
             data.push(item.mal_id)
         })
         setHasData(true);
-        data.forEach((item)=>{
-            console.log(item);
-        })
     }
+
     return (
         <div className="browser">
             <div className="browsersearchbar">
@@ -34,9 +33,9 @@ function Browser() {
                         setSearchKeyword('');
                 }}>Search</button>
             </div>
-            {hasData &&
-                <p>haha</p>
-            }
+            {hasData && data.map(item=>(
+                <p>{item}</p>
+            ))}
         </div>
     )
 }
