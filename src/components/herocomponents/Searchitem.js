@@ -106,7 +106,8 @@ function Searchitem({id}) {
                     >
                         <MenuItem onClick={handleClose}><p className="submitScoreTabTitle">Score</p></MenuItem>
                         {[1,2,3,4,5,6,7,8,9,10].map((val)=>(
-                            <MenuItem onClick={async()=>{
+                            <MenuItem
+                            onClick={async()=>{
                                 handleClose();
                                 await fire
                                         .firestore()

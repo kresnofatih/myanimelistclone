@@ -8,6 +8,12 @@
     border: 3px solid white;
 }
 
+@media screen and (max-width: 1000px){
+    .browser {
+        width: 350px;
+    }
+}
+
 .browsersearchbar {
     position: -webkit-sticky;
     position: sticky;

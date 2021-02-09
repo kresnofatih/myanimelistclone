@@ -83,3 +83,21 @@
     font-weight: 700;
     color:#127681;
 }
+
+@media screen and (max-width: 600px){
+    .searchitem_imgbox {
+        margin-right: 15px;
+    }
+    .searchitem_imgbox img {
+        width: 75px;
+    }
+    .searchitem_title {
+        font-size: 15px;
+    }
+    .searchitem_data {
+        font-size: 12px;
+    }
+    .submitScoreMenuItem {
+        font-size: 12px;
+    }
+}
