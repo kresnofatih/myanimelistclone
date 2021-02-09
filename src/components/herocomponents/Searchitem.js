@@ -4,6 +4,7 @@ import AddCircleIcon from '@material-ui/icons/AddCircle';
 import { cyan } from '@material-ui/core/colors';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import fire from '../../Fire';
 
 function Searchitem({id}) {
     const [data] = useState({})
@@ -84,7 +85,14 @@ function Searchitem({id}) {
                     >
                         <MenuItem onClick={handleClose}><p className="submitScoreTabTitle">Score</p></MenuItem>
                         {[1,2,3,4,5,6,7,8,9,10].map((val)=>(
-                            <MenuItem onClick={handleClose}><p className="submitScoreMenuItem">{val}</p></MenuItem>
+                            <MenuItem onClick={async()=>{
+                                const email = fire.auth().currentUser.email;
+                                await fire.firestore().collection('users').doc(email).collection('posts').doc(""+id).set({
+                                    mal_id: id,
+                                    score: val
+                                })
+                                handleClose();
+                            }}><p className="submitScoreMenuItem">{val}</p></MenuItem>
                         ))}
                     </Menu>
                 </div>
