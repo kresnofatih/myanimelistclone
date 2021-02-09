@@ -7,33 +7,54 @@ import MenuItem from '@material-ui/core/MenuItem';
 import fire from '../../Fire';
 
 function Searchitem({id}) {
+    const email = fire.auth().currentUser.email;
     const [data] = useState({})
     const [hasData, setHasData] = useState(false)
     const getAnimeData = async () => {
-        const resp = await fetch(`https://api.jikan.moe/v3/anime/${id}`);
-        if(resp.status===200){
-            const respjson = await resp.json();
-    
+        const doc = await fire.firestore().collection('animes').doc(''+id).get();
+        if (!doc.exists){
+            const resp = await fetch(`https://api.jikan.moe/v3/anime/${id}`);
+            if(resp.status===200){
+                const respjson = await resp.json();
+        
+                // assign properties
+                data.imageUrl = respjson.image_url;
+                data.title = respjson.title;
+                data.epsiodes = respjson.episodes;
+        
+                // process the synopsis data
+                if(respjson.synopsis===null){
+                    data.synopsis = 'This anime has no synopsis yet.'
+                } else {
+                    data.synopsis = respjson.synopsis.slice(0, 200)+' ...';
+                }
+                data.type = respjson.type;
+                
+                //  process multiple genres
+                data.genres = '';
+                respjson.genres.forEach(({name})=>{
+                    data.genres += name;
+                    data.genres += ', ';
+                })
+                setHasData(true);
+            }
+        } else {
+            const respjson = doc.data();
             // assign properties
-            data.imageUrl = respjson.image_url;
-            data.title = respjson.title;
-            data.epsiodes = respjson.episodes;
+            data.imageUrl = respjson.data.imageUrl;
+            data.title = respjson.data.title;
+            data.epsiodes = respjson.data.episodes;
     
             // process the synopsis data
             if(respjson.synopsis===null){
                 data.synopsis = 'This anime has no synopsis yet.'
             } else {
-                data.synopsis = respjson.synopsis.slice(0, 200)+' ...';
+                data.synopsis = respjson.data.synopsis.slice(0, 200)+' ...';
             }
-            data.type = respjson.type;
-            
-            //  process multiple genres
-            data.genres = '';
-            respjson.genres.forEach(({name})=>{
-                data.genres += name;
-                data.genres += ', ';
-            })
+            data.type = respjson.data.type;
+            data.genres = respjson.data.genres;
             setHasData(true);
+
         }
 
         // set state
@@ -86,12 +107,26 @@ function Searchitem({id}) {
                         <MenuItem onClick={handleClose}><p className="submitScoreTabTitle">Score</p></MenuItem>
                         {[1,2,3,4,5,6,7,8,9,10].map((val)=>(
                             <MenuItem onClick={async()=>{
-                                const email = fire.auth().currentUser.email;
-                                await fire.firestore().collection('users').doc(email).collection('posts').doc(""+id).set({
-                                    mal_id: id,
-                                    score: val
-                                })
                                 handleClose();
+                                await fire
+                                        .firestore()
+                                        .collection('users')
+                                        .doc(email)
+                                        .collection('posts')
+                                        .doc(""+id)
+                                        .set({
+                                            mal_id: id,
+                                            score: val,
+                                            data: data
+                                        });
+                                await fire
+                                        .firestore()
+                                        .collection('animes')
+                                        .doc(""+id)
+                                        .set({
+                                            mal_id: id,
+                                            data: data
+                                        });
                             }}><p className="submitScoreMenuItem">{val}</p></MenuItem>
                         ))}
                     </Menu>

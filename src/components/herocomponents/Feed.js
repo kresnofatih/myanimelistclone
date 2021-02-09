@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 
-function Feed({idData}) {
+function Feed() {
     return (
         <div>
             test
