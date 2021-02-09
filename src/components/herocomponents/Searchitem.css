@@ -66,5 +66,19 @@
     font-family: 'MontSerrat', sans-serif;
     font-weight: 500;
     color:#127681;
-    border-bottom: 1px solid #DFDFDF;
+    border-bottom: 1px solid #d5d5d5;
+}
+
+.submitScoreMenuItem {
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color:black;
+    background-color: white;
+}
+.submitScoreMenuItem:hover {
+    background-color: rgb(191, 191, 191);
 }

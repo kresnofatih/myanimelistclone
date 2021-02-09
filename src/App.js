@@ -67,6 +67,12 @@ function App() {
         authUser.user.updateProfile({
           displayName: userName,
           photoURL: photoUrl || "https://pbs.twimg.com/profile_images/1131624264405327873/1YpVVtxD_400x400.jpg"
+        }).then(async ()=>{
+          await fire.firestore().collection('users').doc(email).set({
+            userName: userName,
+            email: email,
+            photoUrl: photoUrl
+          });
         });
         setHasAccount(true);
         setCreatedAccount(true);
@@ -140,6 +146,7 @@ function App() {
           setUserName={setUserName}
           photoUrl={photoUrl}
           setPhotoUrl={setPhotoUrl}
+          setCreatedAccount={setCreatedAccount}
         />
       )}
     </div>

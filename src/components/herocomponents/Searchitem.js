@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import './Searchitem.css'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import { cyan } from '@material-ui/core/colors';
-import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 
@@ -12,7 +11,6 @@ function Searchitem({id}) {
     const getAnimeData = async () => {
         const resp = await fetch(`https://api.jikan.moe/v3/anime/${id}`);
         if(resp.status===200){
-            console.log("got the data");
             const respjson = await resp.json();
     
             // assign properties
@@ -35,9 +33,6 @@ function Searchitem({id}) {
                 data.genres += ', ';
             })
             setHasData(true);
-        } else if(resp.status===429){
-            console.log("retrying");
-            return getAnimeData();
         }
 
         // set state
@@ -49,6 +44,10 @@ function Searchitem({id}) {
     const handleClose = () => {
         setAnchorEl(null);
     };
+    // submitScoreMethod
+    const submitScore = () => {
+        //
+    }
     useEffect(()=>{
         getAnimeData();
     }, [])
@@ -85,7 +84,7 @@ function Searchitem({id}) {
                     >
                         <MenuItem onClick={handleClose}><p className="submitScoreTabTitle">Score</p></MenuItem>
                         {[1,2,3,4,5,6,7,8,9,10].map((val)=>(
-                            <MenuItem onClick={handleClose}>{val}</MenuItem>
+                            <MenuItem onClick={handleClose}><p className="submitScoreMenuItem">{val}</p></MenuItem>
                         ))}
                     </Menu>
                 </div>

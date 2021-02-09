@@ -14,7 +14,8 @@ function Login({email,
                 userName,
                 setUserName,
                 photoUrl,
-                setPhotoUrl
+                setPhotoUrl,
+                setCreatedAccount
             }) {
     return (
         <div className="loginComponent">
@@ -48,7 +49,10 @@ function Login({email,
                         <p className="passwordErrorMsg errormsglabel">{passwordErrorMsg}</p>
                         <div className="btnContainer">
                             <button onClick={handleLogin}>Log In</button>
-                            <p>Don't have an account? <span onClick={()=>setHasAccount(!hasAccount)}>sign up</span></p>
+                            <p>Don't have an account? <span onClick={()=>{
+                                    setHasAccount(!hasAccount);
+                                    setCreatedAccount(false);
+                                }}>sign up</span></p>
                         </div>
                     </div>
                 ) : (
@@ -60,6 +64,7 @@ function Login({email,
                         <input
                             type='text'
                             placeholder="Username"
+                            autoFocus
                             required
                             value={userName}
                             onChange={(e)=>setUserName(e.target.value)}
@@ -67,7 +72,6 @@ function Login({email,
                         <input
                             type='text'
                             placeholder="Email"
-                            autoFocus
                             required
                             value={email}
                             onChange={(e)=>setEmail(e.target.value)}
