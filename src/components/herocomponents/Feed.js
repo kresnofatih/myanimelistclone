@@ -8,7 +8,7 @@ function Feed() {
     useEffect(()=>{
         fire.firestore().collection('feed').onSnapshot(snapshot=>(
         setFeedPosts(snapshot.docs.map(doc=>doc.data()).sort((a,b)=>{
-            return a.time-b.time;
+            return b.time-a.time;
         }))
         ))
     }, [])

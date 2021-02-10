@@ -126,8 +126,7 @@ function Searchitem({id}) {
                                             mal_id: id,
                                             data: data
                                         });
-                                const d = new Date();
-                                const timestamp = d.toUTCString();
+                                const now = new Date;
                                 await fire
                                         .firestore()
                                         .collection('feed')
@@ -137,7 +136,15 @@ function Searchitem({id}) {
                                             user: userName,
                                             photoUrl: photoUrl,
                                             score: val,
-                                            time: timestamp
+                                            time: Date.UTC(
+                                                now.getUTCFullYear(),
+                                                now.getUTCMonth(), 
+                                                now.getUTCDate(), 
+                                                now.getUTCHours(), 
+                                                now.getUTCMinutes(), 
+                                                now.getUTCSeconds(), 
+                                                now.getUTCMilliseconds()
+                                            )
                                         });
                             }}><p className="submitScoreMenuItem">{val}</p></MenuItem>
                         ))}
