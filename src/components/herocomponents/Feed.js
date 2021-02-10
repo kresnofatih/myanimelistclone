@@ -7,7 +7,9 @@ function Feed() {
     const [feedPosts, setFeedPosts] = useState([]);
     useEffect(()=>{
         fire.firestore().collection('feed').onSnapshot(snapshot=>(
-        setFeedPosts(snapshot.docs.map(doc=>doc.data()))
+        setFeedPosts(snapshot.docs.map(doc=>doc.data()).sort((a,b)=>{
+            return a.time-b.time;
+        }))
         ))
     }, [])
     return (
