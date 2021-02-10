@@ -10,6 +10,51 @@
     align-items: center;
     background-color: white;
 }
+.heromenu {
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    outline: none;
+    border: none;
+}
+.heromenu:hover {
+    cursor: pointer;
+}
+
+.heromenu_username {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #10375C;
+    border-bottom: 1px solid #10375C;
+}
+.heromenu_nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    padding: 0;
+    padding-bottom: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    color: #10375C;
+}
+.heromenu_nav:hover {
+    font-weight: 600;
+}
 
 .heroheader {
     margin: 0;

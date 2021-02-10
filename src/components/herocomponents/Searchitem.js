@@ -126,7 +126,7 @@ function Searchitem({id}) {
                                             mal_id: id,
                                             data: data
                                         });
-                                const now = new Date;
+                                const now = new Date();
                                 await fire
                                         .firestore()
                                         .collection('feed')
@@ -144,7 +144,7 @@ function Searchitem({id}) {
                                                 now.getUTCMinutes(), 
                                                 now.getUTCSeconds(), 
                                                 now.getUTCMilliseconds()
-                                            )
+                                            )-1576800000000
                                         });
                             }}><p className="submitScoreMenuItem">{val}</p></MenuItem>
                         ))}
