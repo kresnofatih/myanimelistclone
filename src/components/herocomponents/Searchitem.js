@@ -8,6 +8,8 @@ import fire from '../../Fire';
 
 function Searchitem({id}) {
     const email = fire.auth().currentUser.email;
+    const userName = fire.auth().currentUser.displayName;
+    const photoUrl = fire.auth().currentUser.photoURL;
     const [data] = useState({})
     const [hasData, setHasData] = useState(false)
     const getAnimeData = async () => {
@@ -20,7 +22,7 @@ function Searchitem({id}) {
                 // assign properties
                 data.imageUrl = respjson.image_url;
                 data.title = respjson.title;
-                data.epsiodes = respjson.episodes;
+                data.episodes = respjson.episodes;
         
                 // process the synopsis data
                 if(respjson.synopsis===null){
@@ -43,7 +45,7 @@ function Searchitem({id}) {
             // assign properties
             data.imageUrl = respjson.data.imageUrl;
             data.title = respjson.data.title;
-            data.epsiodes = respjson.data.episodes;
+            data.episodes = respjson.data.episodes;
     
             // process the synopsis data
             if(respjson.synopsis===null){
@@ -83,7 +85,7 @@ function Searchitem({id}) {
                         </div>
                         <div className="searchitem_info">
                             <p className="searchitem_title">{data.title}</p>
-                            <p className="searchitem_data">Episodes: {data.epsiodes}</p>
+                            <p className="searchitem_data">Episodes: {data.episodes}</p>
                             <p className="searchitem_data">Genres: {data.genres}</p>
                             <p className="searchitem_data">Synopsis: {data.synopsis}</p>
                             <p className="searchitem_data">Type: {data.type}</p>
@@ -127,6 +129,15 @@ function Searchitem({id}) {
                                         .set({
                                             mal_id: id,
                                             data: data
+                                        });
+                                await fire
+                                        .firestore()
+                                        .collection('feed')
+                                        .add({
+                                            mal_id: id,
+                                            data: data,
+                                            user: userName,
+                                            photoUrl: photoUrl
                                         });
                             }}><p className="submitScoreMenuItem">{val}</p></MenuItem>
                         ))}
