@@ -68,10 +68,6 @@ function Searchitem({id}) {
     const handleClose = () => {
         setAnchorEl(null);
     };
-    // submitScoreMethod
-    const submitScore = () => {
-        //
-    }
     useEffect(()=>{
         getAnimeData();
     }, [])
@@ -137,7 +133,8 @@ function Searchitem({id}) {
                                             mal_id: id,
                                             data: data,
                                             user: userName,
-                                            photoUrl: photoUrl
+                                            photoUrl: photoUrl,
+                                            score: val
                                         });
                             }}><p className="submitScoreMenuItem">{val}</p></MenuItem>
                         ))}

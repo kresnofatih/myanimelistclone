@@ -109,6 +109,7 @@ function App() {
 
   useEffect(()=>{
     authListener();
+    clearInputs();
     setEmailErrorMsg('');
     setPasswordErrorMsg('');
   }, [hasAccount])
