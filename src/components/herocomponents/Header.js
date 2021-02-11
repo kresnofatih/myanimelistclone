@@ -73,7 +73,8 @@ function Header({redirectPage, handleLogout}) {
                                 handleClose();
                                 const file = e.target.files[0];
                                 const storageRef = fire.storage().ref();
-                                const fileRef = storageRef.child('users/avatar/'+userName);
+                                const d = new Date();
+                                const fileRef = storageRef.child('users/avatar/'+userName+'/'+d.toLocaleString().replace("/", "_").replace("/", "_").replace(" ", "_"));
                                 fileRef
                                     .put(file)
                                     .then(()=>{
