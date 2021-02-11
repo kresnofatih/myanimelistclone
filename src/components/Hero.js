@@ -4,13 +4,11 @@ import './Hero.css'
 import Browser from './herocomponents/Browser'
 import Feed from './herocomponents/Feed'
 
-function Hero({user, handleLogout}) {
+function Hero({handleLogout}) {
     const [page, setPage] = useState('Feed');
     return (
         <div className="hero">
             <Header 
-                userName={user.displayName}
-                profilePictureUrl={user.photoURL}
                 redirectPage={setPage}
                 handleLogout={handleLogout}
             />

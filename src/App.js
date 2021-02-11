@@ -128,7 +128,6 @@ function App() {
       </Snackbar>
       {user!=='' ? (
         <Hero 
-          user={user} 
           handleLogout={handleLogout}
         />
       ) : (
