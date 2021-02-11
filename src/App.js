@@ -5,6 +5,7 @@ import Login from './components/Login';
 import Hero from './components/Hero';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
+import {Helmet} from 'react-helmet';
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -116,6 +117,9 @@ function App() {
 
   return (
     <div className="App">
+      <Helmet>
+        <title>MyAnimeList Clone</title>
+      </Helmet>
       <Snackbar 
         open={createdAccount} 
         autoHideDuration={3000} 

@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# MyAnimeList Clone 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Access the deployed [web](https://myanimelistclone.web.app/).
 
-## Available Scripts
+## About the Project
 
-In the project directory, you can run:
+The pandemic has forced the whole world to a long and complete lockdown. 
+The long-lasting pandemic has brought millions of new people to fall in love with a certain entertainment called Anime.
+This project is a website for the community of Anime lovers to express their love and opinions about Anime. The features of the web is as follows:\
 
-### `npm start`
+### Authentication
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The web requires users to sign up for an account to utilize the Anime social web app. By default it will assume you already have an account and will bring you to a login page but you can redirect if you haven't got an account just yet. It will require you to provide a username, email, password, and a url for a profile photo. For the timebeing,
+the photo is recommended to be a square because there is no image-squarer feature just yet. Later, you can upload your own profile picture after successfully created an account and logged in. 
+Here's an image of the signin and login page:\
+![Signup Page](https://firebasestorage.googleapis.com/v0/b/myanimelistclone.appspot.com/o/readme%2Fmalc_screencapture_signuppage.PNG?alt=media&token=099d8499-b7e4-4b9e-95cb-88943af46847) here is the signup page view.\
+![Login Page](https://firebasestorage.googleapis.com/v0/b/myanimelistclone.appspot.com/o/readme%2Fmalc_screencapture_loginpage.PNG?alt=media&token=5aeb23a3-814a-4fb0-91bd-51921139a009) here is the login page view.\
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+There is no email verification feature yet so you can come up with one that just doesn't exist. It will only act as an identifier to the account. Only a single account can exist for a single email.\
 
-### `npm test`
+### Feed Page
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+After logging in, the first page you will see is the feed page. It's a timeline of posts created from all users that exists in the community. What you can do in this web is basically give a score to an anime. The score you gave will automatically create a post that will be seen in the timeline by everyone in the community.\
+![Feed Page](https://firebasestorage.googleapis.com/v0/b/myanimelistclone.appspot.com/o/readme%2Fmalc_screencapture_feedpage.PNG?alt=media&token=eb1dfb93-5394-4238-909c-1c8cf92a16ff) Here is a view of the feed page.\
+The feed page will be filled by posts of peoples' posts that consists of a user's profile picture, username, the score he/she has given to a particular anime, and the basic data of the anime scored.
 
-### `npm run build`
+### Scoring an Anime
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Basically you can score any anime from any posts that has a plus sign button. The plus sign button, when pressed will open a popup menu that has a list of score options from 1 to 10 (from worst to best). After pressing/clicking a score, the web should send a POST request to the database server to store the post data. After that, the post should be visible in the Feed post. \
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![score an anime](https://firebasestorage.googleapis.com/v0/b/myanimelistclone.appspot.com/o/readme%2Fmalc_screencapture_feedscore.PNG?alt=media&token=bca00132-c36b-4af2-b7fc-25da3f1dd39f) This is how it will look when you press the plus button on the feed page.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Note: Scoring an anime will post to the feed page and the posts on the feed page cannot be deleted. Scoring the same anime will replace your submitted score to an anime but will create a new post of the same anime to the feed page.**
 
-### `npm run eject`
+### Header Menu
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To navigate the page or run a certain functionality, you need to open the main menu popup which will appear after clicking the profile picture located inside the page header. On your screen, the profile picture will be located on your top right.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![navigate the page](https://firebasestorage.googleapis.com/v0/b/myanimelistclone.appspot.com/o/readme%2Fmalc_screencapture_navigate.PNG?alt=media&token=32da6e0e-75f4-49f3-a4c7-17d3ccb4187d) here is a screenshot of how the menu will appear after clicking the profile picture.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+As you can see, you have the option to the following:\
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### Navigate to Browse page
 
-## Learn More
+This will lead you to an empty page wil a search bar by default. There will be able to type an anime title and obtain results after you press on the search button.\
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![browse page](https://firebasestorage.googleapis.com/v0/b/myanimelistclone.appspot.com/o/readme%2Fmalc_screencapture_browsepage.PNG?alt=media&token=846f4cb2-11c4-4989-a890-8e3c20c51888) here is a screenshot of how the browse page will appear after typing an anime title and presing the search button. You can also score animes on the browse page.\
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Upload a new profile picture
 
-### Code Splitting
+You can update a profile picture of an image file from your own device by pressing the avatar option [headermenu view](https://firebasestorage.googleapis.com/v0/b/myanimelistclone.appspot.com/o/readme%2Fmalc_screencapture_menu.PNG?alt=media&token=1d0840d4-d0a9-4297-8143-48e01a5b6aef).\
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### Log Out
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+You can finally logout by pressing the logout option on the header menu.
