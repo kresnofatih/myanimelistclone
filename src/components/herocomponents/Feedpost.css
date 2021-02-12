@@ -23,6 +23,7 @@
 
 .feedpostphoto {
     height: 40px;
+    width: 40px;
     border-radius: 50ch;
     margin-right: 10px;
 }
@@ -35,4 +36,17 @@
     padding: 0;
     margin: 0;
     margin-right: 10px;
+}
+
+@media screen and (max-width: 600px){
+    .feedpostusername {
+        font-size: 15px;
+    }
+    .feedpostheader {
+        padding: 5px;
+        padding-left: 20px;
+    }
+    .feedpostheader p {
+        font-size: 12px;
+    }
 }
